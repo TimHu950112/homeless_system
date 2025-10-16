@@ -433,10 +433,50 @@ def init_data():
     for program in welfare_programs:
         db.insert('welfare_programs', program)
 
+    # 創建示例餐券
+    meal_vouchers = [
+        {
+            'user_id': 1,  # user1
+            'meal_type': '午餐',
+            'issued_date': today.isoformat(),
+            'expiry_date': (today + timedelta(days=30)).isoformat(),
+            'is_used': False,
+            'used_date': None,
+            'provider_name': None,
+            'created_at': today.isoformat(),
+            'updated_at': today.isoformat()
+        },
+        {
+            'user_id': 1,  # user1
+            'meal_type': '晚餐',
+            'issued_date': today.isoformat(),
+            'expiry_date': (today + timedelta(days=30)).isoformat(),
+            'is_used': False,
+            'used_date': None,
+            'provider_name': None,
+            'created_at': today.isoformat(),
+            'updated_at': today.isoformat()
+        },
+        {
+            'user_id': 2,  # user2
+            'meal_type': '午餐',
+            'issued_date': (today - timedelta(days=5)).isoformat(),
+            'expiry_date': (today + timedelta(days=25)).isoformat(),
+            'is_used': True,
+            'used_date': (today - timedelta(days=2)).isoformat(),
+            'provider_name': '愛心餐廳 - 大同站',
+            'created_at': (today - timedelta(days=5)).isoformat(),
+            'updated_at': (today - timedelta(days=2)).isoformat()
+        }
+    ]
+
+    for voucher in meal_vouchers:
+        db.insert('meal_vouchers', voucher)
+
     print("✓ 示例數據初始化完成！")
     print("\n測試帳號：")
-    print("  一般用戶: user1 / password123 (100點)")
-    print("  一般用戶: user2 / password123 (50點)")
+    print("  一般用戶: user1 / password123 (100點, 2張有效餐券)")
+    print("  一般用戶: user2 / password123 (50點, 1張已使用餐券)")
     print("  社工: social_worker / password123")
     print("  管理員: admin / admin123")
 

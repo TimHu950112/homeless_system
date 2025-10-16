@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "user_id": 1,
+    "meal_type": "午餐",
+    "issued_date": "2025-10-17T00:20:45.175415",
+    "expiry_date": "2025-11-16T00:20:45.175415",
+    "is_used": false,
+    "used_date": null,
+    "provider_name": null,
+    "created_at": "2025-10-17T00:20:45.175415",
+    "updated_at": "2025-10-17T00:20:45.175415",
+    "id": 1
+  },
+  {
+    "user_id": 1,
+    "meal_type": "晚餐",
+    "issued_date": "2025-10-17T00:20:45.175415",
+    "expiry_date": "2025-11-16T00:20:45.175415",
+    "is_used": false,
+    "used_date": null,
+    "provider_name": null,
+    "created_at": "2025-10-17T00:20:45.175415",
+    "updated_at": "2025-10-17T00:20:45.175415",
+    "id": 2
+  },
+  {
+    "user_id": 2,
+    "meal_type": "午餐",
+    "issued_date": "2025-10-12T00:20:45.175415",
+    "expiry_date": "2025-11-11T00:20:45.175415",
+    "is_used": true,
+    "used_date": "2025-10-15T00:20:45.175415",
+    "provider_name": "愛心餐廳 - 大同站",
+    "created_at": "2025-10-12T00:20:45.175415",
+    "updated_at": "2025-10-15T00:20:45.175415",
+    "id": 3
+  }
+]
