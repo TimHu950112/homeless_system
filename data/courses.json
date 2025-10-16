@@ -1,25 +1,5 @@
 [
   {
-    "title": "微光驛站 - 生活重建課程",
-    "category": "life_skills",
-    "instructor": "微光團隊",
-    "organizer": "微光驛站",
-    "description": "微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。課程內容包含生活技能培訓、心理支持與自立規劃。",
-    "start_date": "2025-10-23",
-    "end_date": "2025-11-22",
-    "schedule": "每週二、四 14:00-16:00",
-    "location": "微光驛站",
-    "address": "台北車站地下街Z10出口",
-    "max_participants": 15,
-    "enrolled_count": 3,
-    "delivery_mode": "in_person",
-    "completion_points": 50,
-    "attendance_requirement": 0.8,
-    "is_active": true,
-    "id": 1,
-    "created_at": "2025-10-16T23:03:22.959682"
-  },
-  {
     "title": "街遊與體驗營推廣倡議",
     "category": "advocacy",
     "instructor": "芒草心團隊",
@@ -36,8 +16,8 @@
     "completion_points": 40,
     "attendance_requirement": 0.8,
     "is_active": true,
-    "id": 2,
-    "created_at": "2025-10-16T23:03:22.959754"
+    "id": 1,
+    "created_at": "2025-10-16T23:46:30.142084"
   },
   {
     "title": "社會議題教育推廣",
@@ -56,7 +36,7 @@
     "completion_points": 45,
     "attendance_requirement": 0.8,
     "is_active": true,
-    "id": 3,
-    "created_at": "2025-10-16T23:03:22.959851"
+    "id": 2,
+    "created_at": "2025-10-16T23:46:30.142160"
   }
 ]

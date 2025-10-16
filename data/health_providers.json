@@ -1,19 +1,5 @@
 [
   {
-    "name": "微光驛站 - 健康關懷服務",
-    "provider_type": "community_health",
-    "address": "台北車站地下街Z10出口",
-    "district": "中正區",
-    "contact_phone": "02-2361-9388",
-    "services": "基本健康諮詢、轉介服務、心理支持",
-    "opening_hours": "{\"weekday\": \"09:00-21:00\", \"weekend\": \"09:00-18:00\"}",
-    "is_free_clinic": true,
-    "description": "微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供基本健康關懷與醫療資源轉介。",
-    "is_active": true,
-    "id": 1,
-    "created_at": "2025-10-16T23:03:22.960012"
-  },
-  {
     "name": "台北市立聯合醫院",
     "provider_type": "hospital",
     "address": "台北市中正區中華路二段33號",
@@ -24,8 +10,8 @@
     "is_free_clinic": true,
     "description": "提供無家者專屬醫療服務，包含免費健檢、醫療補助、社工協助與精神醫療。",
     "is_active": true,
-    "id": 2,
-    "created_at": "2025-10-16T23:03:22.960113"
+    "id": 1,
+    "created_at": "2025-10-16T23:46:30.142237"
   },
   {
     "name": "國軍北投醫院附設心理衛生中心",
@@ -38,8 +24,8 @@
     "is_free_clinic": true,
     "description": "專注於心理健康服務，提供壓力諮商、心理治療與衛生教育。",
     "is_active": true,
-    "id": 3,
-    "created_at": "2025-10-16T23:03:22.960200"
+    "id": 2,
+    "created_at": "2025-10-16T23:46:30.142303"
   },
   {
     "name": "社團法人台灣依醫會",
@@ -52,8 +38,8 @@
     "is_free_clinic": true,
     "description": "提供出隊義診服務，結合多科別醫療與心理關懷。",
     "is_active": true,
-    "id": 4,
-    "created_at": "2025-10-16T23:03:22.960287"
+    "id": 3,
+    "created_at": "2025-10-16T23:46:30.142383"
   },
   {
     "name": "財團法人台北市忍友愛心協會",
@@ -66,7 +52,7 @@
     "is_free_clinic": true,
     "description": "發放友卡提供免費醫療，結合心靈重建與信仰輔導服務。",
     "is_active": true,
-    "id": 5,
-    "created_at": "2025-10-16T23:03:22.960383"
+    "id": 4,
+    "created_at": "2025-10-16T23:46:30.142466"
   }
 ]

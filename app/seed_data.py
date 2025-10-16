@@ -81,18 +81,34 @@ def init_data():
             'is_active': True
         },
         {
+            'name': '台北市立圓通安養院附設無家者中途之家',
+            'address': '台北市士林區',
+            'district': '士林區',
+            'total_beds': 40,
+            'available_beds': 15,
+            'target_group': '不限',
+            'opening_hours': '全天24小時',
+            'check_in_time': '14:00',
+            'check_out_time': '10:00',
+            'contact_phone': '02-2831-5751',
+            'contact_person': '服務台',
+            'description': '提供免費住宿與三餐、配置社工與醫護照顧人力、推動彈性管理，轉型陪伴式服務。',
+            'points_per_day': 0,
+            'is_active': True
+        },
+        {
             'name': '台北市政府社會局委託弘道老人福利基金會辦理「廣安居街友中途之家」',
             'address': '台北市文山區興隆路四段105巷39號',
             'district': '文山區',
-            'total_beds': 40,
-            'available_beds': 12,
-            'target_group': '男性',
+            'total_beds': 35,
+            'available_beds': 10,
+            'target_group': '不限',
             'opening_hours': '全天24小時',
             'check_in_time': '14:00',
             'check_out_time': '10:00',
             'contact_phone': '02-2934-1700',
             'contact_person': '服務台',
-            'description': '安排作息與日常活動，培養生活律度，提供溫溼性安置與避寒服務。',
+            'description': '安排作息與日常活動，培養生活律度、提供溫溼性安置與避寒服務。',
             'points_per_day': 0,
             'is_active': True
         },
@@ -100,15 +116,15 @@ def init_data():
             'name': '財團法人昌盛教育基金會附設「街友短期安置中心」',
             'address': '台北市萬華區環河南路二段250巷74弄2號',
             'district': '萬華區',
-            'total_beds': 35,
-            'available_beds': 10,
+            'total_beds': 30,
+            'available_beds': 8,
             'target_group': '男性',
             'opening_hours': '全天24小時',
             'check_in_time': '15:00',
             'check_out_time': '09:00',
             'contact_phone': '02-2304-0131',
             'contact_person': '服務台',
-            'description': '提供短期住宿、協助就業過渡，結合就業諮商與職能培訓，提供生活重建與營隊講座介入。',
+            'description': '提供短期住宿，協助就業過渡、結合就業諮商與職能培訓、提供生活重建與營隊講座介入。',
             'points_per_day': 0,
             'is_active': True
         },
@@ -117,19 +133,19 @@ def init_data():
             'address': '台北市萬華區西園路二段261巷18號',
             'district': '萬華區',
             'total_beds': 25,
-            'available_beds': 8,
+            'available_beds': 7,
             'target_group': '男性',
             'opening_hours': '全天24小時',
             'check_in_time': '14:00',
             'check_out_time': '10:00',
             'contact_phone': '02-2306-1165',
             'contact_person': '服務台',
-            'description': '提供女性專用避渡住所與隱私空間，結合心理輔導與生活支持，協助自立且標榜穩定租屋。',
+            'description': '提供密度住宿、降低人際衝突、由社工陪伴並推行自決公約、連結就業與社福資源，提供離所追蹤。',
             'points_per_day': 0,
             'is_active': True
         },
         {
-            'name': '社團法人台灣芒草心慈善協會「灣聲國女性無家者中繼安置據點」',
+            'name': '社團法人台灣芒草心慈善協會「潭馨園女性無家者中繼安置據點」',
             'address': '台北市萬華區昆明街152巷12弄3號',
             'district': '萬華區',
             'total_beds': 20,
@@ -140,7 +156,7 @@ def init_data():
             'check_out_time': '09:00',
             'contact_phone': '02-2375-2099',
             'contact_person': '服務台',
-            'description': '整合包裹代管與社宅資源，以低租金輔導入住社區，提供社工追蹤與維繫穩定生活。',
+            'description': '提供女性專用避渡住所與隱私空間、結合心理輔導與生活支持、協助自立且標榜穩定租屋。',
             'points_per_day': 0,
             'is_active': True
         },
@@ -156,7 +172,7 @@ def init_data():
             'check_out_time': '10:00',
             'contact_phone': '02-2370-5842',
             'contact_person': '服務台',
-            'description': '提供小規模住宿與共用生活設施，入住前評估需求並設定自立目標，審查身分與家庭背景，共同決議生活規範。',
+            'description': '整合包裹代管與社宅資源、以低租金輔導入住社區、提供社工追蹤與維繫穩定生活。',
             'points_per_day': 0,
             'is_active': True
         },
@@ -172,7 +188,7 @@ def init_data():
             'check_out_time': '10:00',
             'contact_phone': '02-2381-2021',
             'contact_person': '服務台',
-            'description': '提供夜間住宿與洗浴空間，規劃作息與生活輔導，結合工作培力，協助自立生活。',
+            'description': '提供小規模住宿與共用生活設施、入住前評估需求並設定自立目標、審查身分與家庭背景，共同決議生活規範。',
             'points_per_day': 0,
             'is_active': True
         },
@@ -181,30 +197,30 @@ def init_data():
             'address': '台北市士林區德行西路40巷17號',
             'district': '士林區',
             'total_beds': 18,
-            'available_beds': 7,
-            'target_group': '男性',
+            'available_beds': 6,
+            'target_group': '不限',
             'opening_hours': '18:00-08:00',
             'check_in_time': '18:00',
             'check_out_time': '08:00',
             'contact_phone': '02-2831-5751',
             'contact_person': '服務台',
-            'description': '與NGO合作整合跨域資源，提供庇護式短期安置與餐飲服務，協助身心修復並重建生活動態。',
+            'description': '提供夜間住宿與洗浴空間、規劃作息與生活輔導、結合工作培力，協助自立生活。',
             'points_per_day': 0,
             'is_active': True
         },
         {
-            'name': '財團法人佛教慈善慈善事業基金會「卡一站來來村短期安置中心」',
+            'name': '財團法人佛教慈濟慈善事業基金會「下一站來來村短期安置中心」',
             'address': '新北市三重區重新路五段609巷59號',
             'district': '三重區',
-            'total_beds': 30,
-            'available_beds': 10,
-            'target_group': '男性',
+            'total_beds': 25,
+            'available_beds': 8,
+            'target_group': '不限',
             'opening_hours': '全天24小時',
             'check_in_time': '14:00',
             'check_out_time': '10:00',
             'contact_phone': '02-2999-8100',
             'contact_person': '服務台',
-            'description': '提供短期住宿，協助就業過渡，結合就業諮商與職能培訓，提供生活重建與營隊講座介入。',
+            'description': '與NGO合作整合跨域資源、提供庇護式短期安置與餐飲服務、協助身心修復並重建生活動態。',
             'points_per_day': 0,
             'is_active': True
         }
@@ -239,18 +255,6 @@ def init_data():
     # 創建餐食供應點
     food_providers = [
         {
-            'name': '微光驛站',
-            'provider_type': 'service_station',
-            'address': '台北車站地下街Z10出口',
-            'district': '中正區',
-            'meal_times': '{"breakfast": "07:00-09:00", "lunch": "11:30-13:30", "dinner": "17:30-19:30"}',
-            'daily_capacity': 100,
-            'contact_phone': '02-2361-9388',
-            'description': '微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供單人空間、自助洗衣設施。',
-            'accepts_voucher': True,
-            'is_active': True
-        },
-        {
             'name': '愛心餐廳 - 大同站',
             'provider_type': 'restaurant',
             'address': '台北市大同區民生西路200號',
@@ -270,24 +274,6 @@ def init_data():
     # 創建課程
     today = datetime.now()
     courses = [
-        {
-            'title': '微光驛站 - 生活重建課程',
-            'category': 'life_skills',
-            'instructor': '微光團隊',
-            'organizer': '微光驛站',
-            'description': '微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。課程內容包含生活技能培訓、心理支持與自立規劃。',
-            'start_date': (today + timedelta(days=7)).date().isoformat(),
-            'end_date': (today + timedelta(days=37)).date().isoformat(),
-            'schedule': '每週二、四 14:00-16:00',
-            'location': '微光驛站',
-            'address': '台北車站地下街Z10出口',
-            'max_participants': 15,
-            'enrolled_count': 3,
-            'delivery_mode': 'in_person',
-            'completion_points': 50,
-            'attendance_requirement': 0.8,
-            'is_active': True
-        },
         {
             'title': '街遊與體驗營推廣倡議',
             'category': 'advocacy',
@@ -332,18 +318,6 @@ def init_data():
     # 創建醫療機構
     health_providers = [
         {
-            'name': '微光驛站 - 健康關懷服務',
-            'provider_type': 'community_health',
-            'address': '台北車站地下街Z10出口',
-            'district': '中正區',
-            'contact_phone': '02-2361-9388',
-            'services': '基本健康諮詢、轉介服務、心理支持',
-            'opening_hours': '{"weekday": "09:00-21:00", "weekend": "09:00-18:00"}',
-            'is_free_clinic': True,
-            'description': '微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供基本健康關懷與醫療資源轉介。',
-            'is_active': True
-        },
-        {
             'name': '台北市立聯合醫院',
             'provider_type': 'hospital',
             'address': '台北市中正區中華路二段33號',
@@ -368,7 +342,7 @@ def init_data():
             'is_active': True
         },
         {
-            'name': '社團法人台灣依醫會',
+            'name': '社團法人台灣俠醫會',
             'provider_type': 'ngo_clinic',
             'address': '台北市萬華區桂林路128號',
             'district': '萬華區',
@@ -380,7 +354,7 @@ def init_data():
             'is_active': True
         },
         {
-            'name': '財團法人台北市忍友愛心協會',
+            'name': '財團法人台北市恩友愛心協會',
             'provider_type': 'ngo_health',
             'address': '台北市萬華區環河南路二段250巷74弄2號',
             'district': '萬華區',
@@ -398,24 +372,6 @@ def init_data():
 
     # 創建工作機會
     jobs = [
-        {
-            'title': '微光驛站 - 服務助理',
-            'job_type': 'part_time',
-            'description': '協助微光驛站日常營運，包含接待服務、環境維護等工作。微光驛站以「隱私」與「自由」為核心理念，打造人性化的工作環境。',
-            'requirements': '具服務熱忱，願意協助他人。',
-            'location': '台北車站地下街',
-            'address': '台北車站地下街Z10出口',
-            'salary_type': 'hourly',
-            'salary_min': 183,
-            'salary_max': 200,
-            'points_reward': 15,
-            'employer': '微光驛站',
-            'contact_phone': '02-2361-9388',
-            'vacancies': 3,
-            'application_deadline': (today + timedelta(days=30)).date().isoformat(),
-            'work_start_date': (today + timedelta(days=7)).date().isoformat(),
-            'is_active': True
-        },
         {
             'title': '餐廳內場助手',
             'job_type': 'part_time',
@@ -440,22 +396,6 @@ def init_data():
 
     # 創建福利計畫
     welfare_programs = [
-        {
-            'name': '微光驛站 - 自立生活支持計畫',
-            'program_type': 'comprehensive_support',
-            'description': '微光驛站以「隱私」與「自由」為核心理念，提供全方位的生活支持服務，協助使用者逐步建立自立生活能力，包含住宿、就業、心理支持等綜合資源。',
-            'benefits': '提供臨時住宿、生活物資、就業媒合、技能培訓',
-            'amount_min': 0,
-            'amount_max': 0,
-            'eligibility_criteria': '無家者或居住不穩定者',
-            'required_documents': '身分證明文件即可',
-            'organizer': '微光驛站',
-            'contact_phone': '02-2361-9388',
-            'contact_email': 'service@twilightstation.org',
-            'application_start': today.date().isoformat(),
-            'application_end': (today + timedelta(days=365)).date().isoformat(),
-            'is_active': True
-        },
         {
             'name': '健保費補助',
             'program_type': 'health_insurance',

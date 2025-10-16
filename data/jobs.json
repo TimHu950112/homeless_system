@@ -1,25 +1,5 @@
 [
   {
-    "title": "微光驛站 - 服務助理",
-    "job_type": "part_time",
-    "description": "協助微光驛站日常營運，包含接待服務、環境維護等工作。微光驛站以「隱私」與「自由」為核心理念，打造人性化的工作環境。",
-    "requirements": "具服務熱忱，願意協助他人。",
-    "location": "台北車站地下街",
-    "address": "台北車站地下街Z10出口",
-    "salary_type": "hourly",
-    "salary_min": 183,
-    "salary_max": 200,
-    "points_reward": 15,
-    "employer": "微光驛站",
-    "contact_phone": "02-2361-9388",
-    "vacancies": 3,
-    "application_deadline": "2025-11-15",
-    "work_start_date": "2025-10-23",
-    "is_active": true,
-    "id": 1,
-    "created_at": "2025-10-16T23:03:22.960473"
-  },
-  {
     "title": "餐廳內場助手",
     "job_type": "part_time",
     "description": "協助廚房備料、清洗、簡單烹調等工作。",
@@ -35,7 +15,7 @@
     "vacancies": 2,
     "application_deadline": "2025-10-30",
     "is_active": true,
-    "id": 2,
-    "created_at": "2025-10-16T23:03:22.960542"
+    "id": 1,
+    "created_at": "2025-10-16T23:46:30.142555"
   }
 ]
