@@ -246,6 +246,22 @@ def init_data():
             'description': '微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供單人空間、自助洗衣設施。',
             'cost_per_use': 0,
             'is_active': True
+        },
+        {
+            'name': '社團法人台灣芒草心慈善協會「香香澡堂街友盥洗據點」',
+            'address': '台北市萬華區昆明街141號',
+            'district': '萬華區',
+            'has_shower': True,
+            'has_laundry': True,
+            'shower_rooms': 6,
+            'washing_machines': 3,
+            'has_dryer': True,
+            'provides_toiletries': True,
+            'service_hours': '週一至週日 10:00-18:00',
+            'contact_phone': '02-2370-5842',
+            'description': '提供街友免費盥洗服務，包含淋浴、洗衣、理髮等服務，營造溫馨舒適的盥洗環境，協助街友維持個人衛生與尊嚴。',
+            'cost_per_use': 0,
+            'is_active': True
         }
     ]
 
