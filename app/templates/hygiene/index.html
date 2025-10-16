@@ -3,15 +3,18 @@
 {% block title %}盥洗與洗衣服務 - 無家者服務整合平台{% endblock %}
 
 {% block content %}
-<h1 class="mb-4"><i class="bi bi-droplet"></i> 盥洗與洗衣服務</h1>
-
-<p class="lead">提供乾淨的盥洗設施與洗衣服務，維持基本衛生需求。</p>
+<div class="text-center mb-5" data-aos="fade-down">
+    <h1 class="display-4 gradient-text mb-3">
+        <i class="bi bi-droplet me-2"></i>盥洗與洗衣服務
+    </h1>
+    <p class="lead text-muted">提供乾淨的盥洗設施與洗衣服務，維持基本衛生需求</p>
+</div>
 
 {% if facilities %}
 <div class="row g-4">
     {% for facility in facilities %}
-    <div class="col-md-6">
-        <div class="card h-100">
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+        <div class="card h-100 glow-on-hover">
             <div class="card-body">
                 <h5 class="card-title">{{ facility.get('name') }}</h5>
 
@@ -86,20 +89,29 @@
 {% endif %}
 
 {% if current_user.is_authenticated %}
-<div class="mt-4">
-    <a href="{{ url_for('hygiene.my_bookings') }}" class="btn btn-outline-primary">
-        <i class="bi bi-list-check"></i> 查看我的預約
+<div class="mt-5 text-center" data-aos="fade-up">
+    <a href="{{ url_for('hygiene.my_bookings') }}" class="btn btn-primary btn-lg px-5 shadow">
+        <i class="bi bi-list-check me-2"></i> 查看我的預約
     </a>
 </div>
 {% endif %}
 
-<div class="alert alert-info mt-4">
-    <h5><i class="bi bi-info-circle"></i> 使用說明</h5>
-    <ul class="mb-0">
-        <li>建議提前預約，避免現場等候</li>
-        <li>請自備替換衣物</li>
-        <li>維持環境整潔，愛惜公共設施</li>
-        <li>使用時間每次限制 30 分鐘</li>
-    </ul>
+<div class="alert alert-info mt-5 shadow-sm" data-aos="zoom-in">
+    <div class="d-flex align-items-start">
+        <div class="me-3" style="font-size: 2rem;">
+            <i class="bi bi-lightbulb text-info"></i>
+        </div>
+        <div>
+            <h5 class="mb-3">
+                <i class="bi bi-info-circle me-2"></i>使用說明
+            </h5>
+            <ul class="mb-0">
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>建議提前預約，避免現場等候</li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>請自備替換衣物</li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>維持環境整潔，愛惜公共設施</li>
+                <li class="mb-0"><i class="bi bi-check-circle text-success me-2"></i>使用時間每次限制 30 分鐘</li>
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}

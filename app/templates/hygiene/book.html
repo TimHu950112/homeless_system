@@ -1,2 +1,192 @@
 {% extends "base.html" %}
-{% block content %}<h1>預約盥洗服務</h1><form method="POST"><button>Submit</button></form>{% endblock %}
+
+{% block title %}預約盥洗服務 - {{ facility.get('name') }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center" data-aos="fade-up">
+    <div class="col-lg-8">
+        <!-- Facility Info Card -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-droplet me-2"></i>預約盥洗服務
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-info-circle me-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5 class="mb-2">{{ facility.get('name') }}</h5>
+                            <p class="mb-1"><i class="bi bi-geo-alt me-2"></i>{{ facility.get('address') }}</p>
+                            <p class="mb-1"><i class="bi bi-clock me-2"></i>{{ facility.get('service_hours', '請洽詢') }}</p>
+                            <p class="mb-0"><i class="bi bi-telephone me-2"></i>{{ facility.get('contact_phone') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Services -->
+                <div class="mb-4">
+                    <h6 class="mb-3">提供服務：</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% if facility.get('has_shower') %}
+                        <span class="badge bg-primary"><i class="bi bi-droplet me-1"></i>淋浴</span>
+                        {% endif %}
+                        {% if facility.get('has_laundry') %}
+                        <span class="badge bg-info"><i class="bi bi-water me-1"></i>洗衣</span>
+                        {% endif %}
+                        {% if facility.get('has_dryer') %}
+                        <span class="badge bg-warning"><i class="bi bi-wind me-1"></i>烘衣</span>
+                        {% endif %}
+                        {% if facility.get('provides_toiletries') %}
+                        <span class="badge bg-success"><i class="bi bi-bag me-1"></i>提供盥洗用品</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Cost Info -->
+                {% if facility.get('cost_per_use') %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-star-fill me-2"></i>
+                    <strong>使用費用：</strong>每次 {{ facility.get('cost_per_use') }} 點
+                </div>
+                {% else %}
+                <div class="alert alert-success">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <strong>免費使用</strong>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">
+                    <i class="bi bi-calendar-check me-2"></i>填寫預約資訊
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" class="needs-validation" novalidate>
+                    <!-- Service Type -->
+                    <div class="mb-4">
+                        <label for="service_type" class="form-label fw-bold">
+                            <i class="bi bi-list-check me-2"></i>服務類型 <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select form-select-lg" id="service_type" name="service_type" required>
+                            <option value="">請選擇服務類型</option>
+                            {% if facility.get('has_shower') %}
+                            <option value="shower">淋浴</option>
+                            {% endif %}
+                            {% if facility.get('has_laundry') %}
+                            <option value="laundry">洗衣</option>
+                            {% endif %}
+                            {% if facility.get('has_dryer') %}
+                            <option value="dryer">烘衣</option>
+                            {% endif %}
+                            {% if facility.get('has_laundry') and facility.get('has_dryer') %}
+                            <option value="laundry_dryer">洗衣+烘衣</option>
+                            {% endif %}
+                        </select>
+                        <div class="invalid-feedback">
+                            請選擇服務類型
+                        </div>
+                    </div>
+
+                    <!-- Booking Date -->
+                    <div class="mb-4">
+                        <label for="booking_date" class="form-label fw-bold">
+                            <i class="bi bi-calendar me-2"></i>預約日期 <span class="text-danger">*</span>
+                        </label>
+                        <input type="date" class="form-control form-control-lg" id="booking_date"
+                               name="booking_date" required>
+                        <div class="invalid-feedback">
+                            請選擇預約日期
+                        </div>
+                        <small class="form-text text-muted">
+                            <i class="bi bi-info-circle me-1"></i>建議提前預約，避免現場等候
+                        </small>
+                    </div>
+
+                    <!-- Booking Time -->
+                    <div class="mb-4">
+                        <label for="booking_time" class="form-label fw-bold">
+                            <i class="bi bi-clock me-2"></i>預約時段 <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select form-select-lg" id="booking_time" name="booking_time" required>
+                            <option value="">請選擇時段</option>
+                            <option value="08:00">08:00 - 09:00</option>
+                            <option value="09:00">09:00 - 10:00</option>
+                            <option value="10:00">10:00 - 11:00</option>
+                            <option value="11:00">11:00 - 12:00</option>
+                            <option value="12:00">12:00 - 13:00</option>
+                            <option value="13:00">13:00 - 14:00</option>
+                            <option value="14:00">14:00 - 15:00</option>
+                            <option value="15:00">15:00 - 16:00</option>
+                            <option value="16:00">16:00 - 17:00</option>
+                            <option value="17:00">17:00 - 18:00</option>
+                            <option value="18:00">18:00 - 19:00</option>
+                            <option value="19:00">19:00 - 20:00</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            請選擇預約時段
+                        </div>
+                        <small class="form-text text-muted">
+                            <i class="bi bi-info-circle me-1"></i>每次使用時間限制 30 分鐘
+                        </small>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="alert alert-warning">
+                        <h6 class="mb-2">
+                            <i class="bi bi-exclamation-triangle me-2"></i>注意事項
+                        </h6>
+                        <ul class="mb-0 small">
+                            <li>請準時到場，逾時 15 分鐘視同放棄</li>
+                            <li>請自備替換衣物</li>
+                            <li>維持環境整潔，愛惜公共設施</li>
+                            <li>每次使用時間限制 30 分鐘</li>
+                        </ul>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1">
+                            <i class="bi bi-check-circle me-2"></i>確認預約
+                        </button>
+                        <a href="{{ url_for('hygiene.index') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-x-circle me-2"></i>取消
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- User Points Info -->
+        {% if current_user.is_authenticated and facility.get('cost_per_use') %}
+        <div class="alert alert-info mt-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="d-flex justify-content-between align-items-center">
+                <span>
+                    <i class="bi bi-star-fill text-warning me-2"></i>
+                    您目前的點數：<strong>{{ current_user.points }}</strong> 點
+                </span>
+                {% if current_user.points < facility.get('cost_per_use') %}
+                <span class="badge bg-danger">點數不足</span>
+                {% else %}
+                <span class="badge bg-success">點數充足</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// Set minimum date to today
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('booking_date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+});
+</script>
+{% endblock %}

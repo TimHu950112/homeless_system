@@ -30,11 +30,14 @@ body {
     flex-direction: column;
     background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
     overflow-x: hidden;
+    position: relative;
 }
 
 main {
     flex: 1;
     animation: fadeIn 0.5s ease-in;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -56,6 +59,41 @@ main {
 .navbar {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1030;
+}
+
+.navbar .dropdown-menu {
+    z-index: 1031;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    animation: dropdownSlide 0.3s ease;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar .dropdown-item {
+    padding: 0.7rem 1.5rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin: 0.2rem 0.5rem;
+}
+
+.navbar .dropdown-item:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateX(5px);
 }
 
 .navbar-brand {
@@ -120,9 +158,13 @@ main {
     border-radius: 15px;
     border: none;
     box-shadow: var(--shadow-sm);
-    overflow: hidden;
     background: white;
     position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    z-index: 10;
 }
 
 .card::before {
@@ -152,6 +194,11 @@ main {
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     transition: transform 0.5s ease;
+}
+
+.card .card-img-top-wrapper {
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
 }
 
 .card:hover .card-img-top {
