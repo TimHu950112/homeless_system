@@ -1,7 +1,7 @@
 [
   {
     "username": "user1",
-    "password_hash": "scrypt:32768:8:1$UK1OFsuVfKxbVIUG$14c1154ec810f6c0290ead5986870db48e1888e83e78fef04f2117018524d76130877bb86e21608d1043f400722601799c9aed49fe9b37ce4639fde8a9cc964e",
+    "password_hash": "scrypt:32768:8:1$TVCkYpmglNrqBHWW$f36585aca383cb1166bc3879b07b253aa2c93abee10299812fae29d9cf2beb551934bbc2ca164e963ccbf02bfe906f16199f91286e06d9ca750b0074ee14c253",
     "full_name": "王小明",
     "phone": "0912345678",
     "gender": "男性",
@@ -9,11 +9,11 @@
     "points": 100,
     "is_active": true,
     "id": 1,
-    "created_at": "2025-10-16T20:42:43.184379"
+    "created_at": "2025-10-16T23:03:22.957549"
   },
   {
     "username": "user2",
-    "password_hash": "scrypt:32768:8:1$m1u10GFDKzx0nClc$359be56ce6b8a18c1cfc54d0f807f6371c70e5eee828203affb95a6004035fec3b18395de3370d770c4c12c9d7bac6a5df5d064808278f93753eb9870277b383",
+    "password_hash": "scrypt:32768:8:1$FDH5Tp6zFNeP6lpo$3f45a5b6ed762745105f349cd3fe09bd70f8d29aab95a5666433c4cbbc992ac36dc5e5fedfb805f27a7ecdba89ba5fbc8dfaa5ff4f00262e349a363fb0c3c73f",
     "full_name": "李小花",
     "phone": "0923456789",
     "gender": "女性",
@@ -21,27 +21,27 @@
     "points": 50,
     "is_active": true,
     "id": 2,
-    "created_at": "2025-10-16T20:42:43.184805"
+    "created_at": "2025-10-16T23:03:22.957995"
   },
   {
     "username": "social_worker",
-    "password_hash": "scrypt:32768:8:1$Vum1sNLRpnGwXD5S$6a486fdc08315a0d505fcf3af61ce30bb865df5b0fc2e424343fde2c930e3e18b3f222aeaa788255457e480620db248e47878337c6c5b8c230cae097c29c813f",
+    "password_hash": "scrypt:32768:8:1$V3gdEdTnr3UEcceX$1b201679c2eea4fa50c51506d41e763d4c605127c5407e701243857fdcaa310e7442685f665d910e369bc29d5389b7e094d803aaef3d0009c90cf650260b83b6",
     "full_name": "張社工",
     "phone": "0934567890",
     "user_type": "social_worker",
     "points": 0,
     "is_active": true,
     "id": 3,
-    "created_at": "2025-10-16T20:42:43.184940"
+    "created_at": "2025-10-16T23:03:22.958125"
   },
   {
     "username": "admin",
-    "password_hash": "scrypt:32768:8:1$yZj16XFDHFap5pjM$53b17ebf307b421802dd887e665aa4f34d1a327fc2952885427da6895cc31c06fe572c157da941d247070dd4912e7e9a377e95a4ad1f8bdfc66f409ce0b335b6",
+    "password_hash": "scrypt:32768:8:1$fStkRp5UcswV9CVq$6320e9ca69d5cc244eac2df82451e4c6dbd330b444b6277756611a7feab3ced3d6c5cf0b6e01740702d8616486681bf683aabf20cb52be54f5e9cb3784bc0c8a",
     "full_name": "系統管理員",
     "user_type": "admin",
     "points": 0,
     "is_active": true,
     "id": 4,
-    "created_at": "2025-10-16T20:42:43.185069"
+    "created_at": "2025-10-16T23:03:22.958259"
   }
 ]

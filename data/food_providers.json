@@ -1,17 +1,17 @@
 [
   {
-    "name": "慈善廚房 - 萬華站",
-    "provider_type": "charity",
-    "address": "台北市萬華區西園路一段100號",
-    "district": "萬華區",
+    "name": "微光驛站",
+    "provider_type": "service_station",
+    "address": "台北車站地下街Z10出口",
+    "district": "中正區",
     "meal_times": "{\"breakfast\": \"07:00-09:00\", \"lunch\": \"11:30-13:30\", \"dinner\": \"17:30-19:30\"}",
-    "daily_capacity": 200,
-    "contact_phone": "02-2302-5555",
-    "description": "提供免費三餐，無需預約。",
+    "daily_capacity": 100,
+    "contact_phone": "02-2361-9388",
+    "description": "微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供單人空間、自助洗衣設施。",
     "accepts_voucher": true,
     "is_active": true,
     "id": 1,
-    "created_at": "2025-10-16T20:42:43.185477"
+    "created_at": "2025-10-16T23:03:22.959536"
   },
   {
     "name": "愛心餐廳 - 大同站",
@@ -25,6 +25,6 @@
     "accepts_voucher": true,
     "is_active": true,
     "id": 2,
-    "created_at": "2025-10-16T20:42:43.185558"
+    "created_at": "2025-10-16T23:03:22.959602"
   }
 ]

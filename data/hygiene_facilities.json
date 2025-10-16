@@ -1,20 +1,20 @@
 [
   {
-    "name": "台北車站盥洗中心",
-    "address": "台北市中正區北平西路3號",
+    "name": "微光驛站",
+    "address": "台北車站地下街Z10出口",
     "district": "中正區",
     "has_shower": true,
     "has_laundry": true,
-    "total_shower_rooms": 10,
-    "total_washing_machines": 6,
-    "has_male_section": true,
-    "has_female_section": true,
-    "has_accessible_section": true,
-    "opening_hours": "06:00-22:00",
-    "contact_phone": "02-2311-1234",
-    "description": "提供淋浴、洗衣與基本盥洗用品。",
+    "shower_rooms": 8,
+    "washing_machines": 4,
+    "has_dryer": true,
+    "provides_toiletries": true,
+    "service_hours": "全天24小時",
+    "contact_phone": "02-2361-9388",
+    "description": "微光驛站以「隱私」與「自由」為核心理念，採獨立式模組設計，打造簡約且具人性化的生活空間，讓使用者在共享環境中亦能感受專屬的安穩與尊嚴。提供單人空間、自助洗衣設施。",
+    "cost_per_use": 0,
     "is_active": true,
     "id": 1,
-    "created_at": "2025-10-16T20:42:43.185415"
+    "created_at": "2025-10-16T23:03:22.959467"
   }
 ]

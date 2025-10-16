@@ -1,21 +1,21 @@
 [
   {
-    "name": "租金補助計畫",
-    "program_type": "rent_subsidy",
-    "description": "協助經濟弱勢族群支付租金，減輕居住負擔。",
-    "benefits": "每月補助租金3,000-6,000元",
-    "amount_min": 3000,
-    "amount_max": 6000,
-    "eligibility_criteria": "需符合低收入戶或中低收入戶資格",
-    "required_documents": "身分證、戶籍謄本、租賃契約、財產證明",
-    "organizer": "台北市社會局",
-    "contact_phone": "1999",
-    "contact_email": "welfare@taipei.gov.tw",
+    "name": "微光驛站 - 自立生活支持計畫",
+    "program_type": "comprehensive_support",
+    "description": "微光驛站以「隱私」與「自由」為核心理念，提供全方位的生活支持服務，協助使用者逐步建立自立生活能力，包含住宿、就業、心理支持等綜合資源。",
+    "benefits": "提供臨時住宿、生活物資、就業媒合、技能培訓",
+    "amount_min": 0,
+    "amount_max": 0,
+    "eligibility_criteria": "無家者或居住不穩定者",
+    "required_documents": "身分證明文件即可",
+    "organizer": "微光驛站",
+    "contact_phone": "02-2361-9388",
+    "contact_email": "service@twilightstation.org",
     "application_start": "2025-10-16",
-    "application_end": "2026-01-14",
+    "application_end": "2026-10-16",
     "is_active": true,
     "id": 1,
-    "created_at": "2025-10-16T20:42:43.186052"
+    "created_at": "2025-10-16T23:03:22.960617"
   },
   {
     "name": "健保費補助",
@@ -33,6 +33,6 @@
     "application_end": "2026-04-14",
     "is_active": true,
     "id": 2,
-    "created_at": "2025-10-16T20:42:43.186111"
+    "created_at": "2025-10-16T23:03:22.960682"
   }
 ]
