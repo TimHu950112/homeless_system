@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}我的課程 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-book"></i> 我的課程</h1>
+
+{% if enrollments %}
+<div class="row g-4">
+    {% for enrollment in enrollments %}
+    <div class="col-md-6">
+        <div class="card h-100">
+            {% if enrollment.course.get('image_url') %}
+            <img src="{{ enrollment.course.get('image_url') }}" class="card-img-top" alt="{{ enrollment.course.get('title') }}">
+            {% else %}
+            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <i class="bi bi-book" style="font-size: 3rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ enrollment.course.get('title') }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">
+                        <i class="bi bi-person"></i> {{ enrollment.course.get('instructor') }}<br>
+                        <i class="bi bi-calendar"></i> {{ enrollment.course.get('start_date', 'TBD') }} - {{ enrollment.course.get('end_date', 'TBD') }}<br>
+                        <i class="bi bi-geo-alt"></i> {{ enrollment.course.get('location', '待定') }}
+                    </small>
+                </p>
+
+                <div class="mb-3">
+                    {% if enrollment.get('status') == 'enrolled' %}
+                    <span class="badge bg-success">已報名</span>
+                    {% elif enrollment.get('status') == 'completed' %}
+                    <span class="badge bg-primary">已完成</span>
+                    {% elif enrollment.get('status') == 'dropped' %}
+                    <span class="badge bg-danger">已退選</span>
+                    {% endif %}
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <p class="mb-0"><strong>出席次數：</strong></p>
+                        <p class="text-primary">{{ enrollment.get('attendance_count', 0) }} 次</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="mb-0"><strong>報名日期：</strong></p>
+                        <p class="text-muted small">{{ enrollment.get('created_at', '')[:10] if enrollment.get('created_at') else '未知' }}</p>
+                    </div>
+                </div>
+
+                {% if enrollment.get('completion_date') %}
+                <div class="alert alert-success">
+                    <i class="bi bi-check-circle"></i> 已於 {{ enrollment.get('completion_date')[:10] }} 完成課程
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('courses.detail', id=enrollment.course.get('id')) }}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-info-circle"></i> 查看詳情
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 您目前沒有報名任何課程。
+    <a href="{{ url_for('courses.index') }}" class="alert-link">立即瀏覽課程</a>
+</div>
+{% endif %}
+{% endblock %}

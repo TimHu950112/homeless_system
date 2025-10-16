@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.get('title', '課程詳情') }} - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            {% if course.get('image_url') %}
+            <img src="{{ course.get('image_url') }}" class="card-img-top" alt="{{ course.get('title') }}">
+            {% else %}
+            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 300px;">
+                <i class="bi bi-book" style="font-size: 5rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title">{{ course.get('title') }}</h2>
+                <p class="text-muted">
+                    <i class="bi bi-person"></i> 講師：{{ course.get('instructor') }}
+                </p>
+                <hr>
+                <h5>課程簡介</h5>
+                <p>{{ course.get('description', '暫無課程描述') }}</p>
+
+                <h5 class="mt-4">課程資訊</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-calendar"></i> <strong>開課日期：</strong>{{ course.get('start_date', '待定') }}</li>
+                    <li><i class="bi bi-calendar-check"></i> <strong>結束日期：</strong>{{ course.get('end_date', '待定') }}</li>
+                    <li><i class="bi bi-clock"></i> <strong>上課時間：</strong>{{ course.get('schedule', '待定') }}</li>
+                    <li><i class="bi bi-geo-alt"></i> <strong>上課地點：</strong>{{ course.get('location', '待定') }}</li>
+                    <li><i class="bi bi-people"></i> <strong>招生人數：</strong>{{ course.get('max_students', 0) }} 人</li>
+                    <li><i class="bi bi-person-check"></i> <strong>已報名：</strong>{{ course.get('enrolled_students', 0) }} 人</li>
+                </ul>
+
+                {% if course.get('requirements') %}
+                <h5 class="mt-4">報名條件</h5>
+                <p>{{ course.get('requirements') }}</p>
+                {% endif %}
+
+                {% if course.get('completion_points') %}
+                <div class="alert alert-success mt-4">
+                    <i class="bi bi-star-fill"></i> 完成課程可獲得 <strong>{{ course.get('completion_points') }}</strong> 點數
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> 報名資訊</h5>
+            </div>
+            <div class="card-body">
+                {% if current_user.is_authenticated %}
+                    {% if course.get('enrolled_students', 0) < course.get('max_students', 0) %}
+                        <p class="text-success"><i class="bi bi-check-circle"></i> 尚有名額</p>
+                        <form method="POST" action="{{ url_for('courses.enroll', id=course.get('id')) }}">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-pencil-square"></i> 立即報名
+                            </button>
+                        </form>
+                    {% else %}
+                        <p class="text-danger"><i class="bi bi-x-circle"></i> 名額已滿</p>
+                    {% endif %}
+                {% else %}
+                    <p class="text-muted">請先登入以報名課程</p>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary w-100">
+                        <i class="bi bi-box-arrow-in-right"></i> 登入
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-person-badge"></i> 講師資訊</h5>
+            </div>
+            <div class="card-body">
+                <h6>{{ course.get('instructor') }}</h6>
+                <p class="text-muted small">{{ course.get('instructor_bio', '專業講師') }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('courses.index') }}" class="btn btn-secondary mt-3">
+    <i class="bi bi-arrow-left"></i> 返回課程列表
+</a>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}住宿服務 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5" data-aos="fade-down">
+    <h1 class="display-4 gradient-text mb-3">
+        <i class="bi bi-building me-2"></i>住宿服務
+    </h1>
+    <p class="lead text-muted">提供安全、舒適的臨時住宿環境</p>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4 shadow-sm" data-aos="fade-up">
+    <div class="card-body p-4">
+        <form method="GET" action="{{ url_for('accommodation.index') }}">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="district" class="form-label">行政區</label>
+                    <select class="form-select" id="district" name="district">
+                        <option value="">全部</option>
+                        {% for dist in districts %}
+                        <option value="{{ dist }}" {% if selected_district == dist %}selected{% endif %}>{{ dist }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="target_group" class="form-label">適用族群</label>
+                    <select class="form-select" id="target_group" name="target_group">
+                        <option value="">全部</option>
+                        <option value="男性" {% if selected_target_group == '男性' %}selected{% endif %}>男性</option>
+                        <option value="女性" {% if selected_target_group == '女性' %}selected{% endif %}>女性</option>
+                        <option value="家庭" {% if selected_target_group == '家庭' %}selected{% endif %}>家庭</option>
+                        <option value="高齡者" {% if selected_target_group == '高齡者' %}selected{% endif %}>高齡者</option>
+                        <option value="身障者" {% if selected_target_group == '身障者' %}selected{% endif %}>身障者</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i> 搜尋
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Accommodation List -->
+<div class="row g-4">
+    {% for accommodation in accommodations %}
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+        <div class="card h-100 glow-on-hover">
+            {% if accommodation.get('image_url') %}
+            <img src="{{ accommodation.get('image_url') }}" class="card-img-top" alt="{{ accommodation.get('name') }}">
+            {% else %}
+            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <i class="bi bi-building" style="font-size: 3rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ accommodation.get('name') }}</h5>
+                <p class="card-text">
+                    <span class="badge bg-primary">{{ accommodation.get('target_group') }}</span>
+                    <span class="badge bg-info">{{ accommodation.get('district') }}</span>
+                </p>
+                <p class="card-text">
+                    <i class="bi bi-geo-alt"></i> {{ accommodation.get('address') }}<br>
+                    <i class="bi bi-telephone"></i> {{ accommodation.get('contact_phone') }}<br>
+                    <i class="bi bi-clock"></i> {{ accommodation.get('opening_hours') }}
+                </p>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="mb-0"><strong>總床位：</strong>{{ accommodation.get('total_beds') }}</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="mb-0 text-success"><strong>可用床位：</strong>{{ accommodation.get('available_beds') }}</p>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-muted mb-0">
+                    <small><i class="bi bi-star-fill text-warning"></i> 每日需 {{ accommodation.get('points_per_day') }} 點</small>
+                </p>
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('accommodation.detail', id=accommodation.get('id')) }}" class="btn btn-primary">
+                    查看詳情
+                </a>
+                {% if current_user.is_authenticated and accommodation.get('available_beds', 0) > 0 %}
+                <a href="{{ url_for('accommodation.book', id=accommodation.get('id')) }}" class="btn btn-success">
+                    立即預約
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> 沒有找到符合條件的住宿。
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

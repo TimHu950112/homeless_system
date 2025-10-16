@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}醫療健康 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-heart-pulse"></i> 醫療健康服務</h1>
+
+<p class="lead">提供基本醫療照護與心理諮商服務，守護您的身心健康。</p>
+
+{% if providers %}
+<div class="row g-4">
+    {% for provider in providers %}
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ provider.get('name') }}</h5>
+
+                <p class="card-text mb-3">
+                    <i class="bi bi-geo-alt"></i> {{ provider.get('address') }}<br>
+                    <i class="bi bi-telephone"></i> {{ provider.get('contact_phone') }}<br>
+                    <i class="bi bi-clock"></i> {{ provider.get('service_hours', '請洽詢') }}
+                </p>
+
+                <div class="mb-3">
+                    <span class="badge bg-danger">{{ provider.get('provider_type', '一般醫療') }}</span>
+                    {% if provider.get('has_emergency') %}
+                    <span class="badge bg-warning">急診</span>
+                    {% endif %}
+                    {% if provider.get('has_mental_health') %}
+                    <span class="badge bg-info">心理諮商</span>
+                    {% endif %}
+                </div>
+
+                {% if provider.get('services') %}
+                <div class="mb-3">
+                    <strong>服務項目：</strong>
+                    <p class="small mb-0">{{ provider.get('services') }}</p>
+                </div>
+                {% endif %}
+
+                {% if provider.get('description') %}
+                <p class="card-text"><small class="text-muted">{{ provider.get('description') }}</small></p>
+                {% endif %}
+
+                {% if provider.get('free_services') %}
+                <div class="alert alert-success py-2 px-2">
+                    <small><i class="bi bi-check-circle"></i> 提供免費服務</small>
+                </div>
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <small class="text-muted">
+                        {% if provider.get('requires_appointment') %}
+                        <i class="bi bi-calendar-check"></i> 需預約
+                        {% else %}
+                        <i class="bi bi-person-walking"></i> 可現場掛號
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 目前沒有醫療服務機構資訊。
+</div>
+{% endif %}
+
+<div class="alert alert-danger mt-4">
+    <h5><i class="bi bi-exclamation-triangle"></i> 緊急醫療</h5>
+    <p class="mb-2">如遇緊急醫療狀況，請立即撥打：</p>
+    <h3 class="mb-0">119</h3>
+</div>
+
+<div class="alert alert-info mt-4">
+    <h5><i class="bi bi-info-circle"></i> 就醫提醒</h5>
+    <ul class="mb-0">
+        <li>請攜帶健保卡或身分證件</li>
+        <li>如需心理諮商建議先預約</li>
+        <li>慢性病患者請定期回診</li>
+        <li>若無健保可申請醫療補助</li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}就業培力 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-briefcase"></i> 就業培力</h1>
+
+<p class="lead">提供工作機會媒合與職業培訓，協助您重返職場、經濟獨立。</p>
+
+{% if jobs %}
+<div class="row g-4">
+    {% for job in jobs %}
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="card-title mb-0">{{ job.get('title') }}</h5>
+                    {% if job.get('is_urgent') %}
+                    <span class="badge bg-danger">急徵</span>
+                    {% endif %}
+                </div>
+
+                <p class="text-muted mb-2">
+                    <i class="bi bi-building"></i> {{ job.get('employer') }}
+                </p>
+
+                <p class="card-text mb-3">
+                    <small class="text-muted">
+                        <i class="bi bi-geo-alt"></i> {{ job.get('location') }}<br>
+                        <i class="bi bi-currency-dollar"></i> ${{ job.get('salary_min', 0) }} - ${{ job.get('salary_max', 0) }} / 月<br>
+                        <i class="bi bi-clock"></i> {{ job.get('working_hours', '面議') }}
+                    </small>
+                </p>
+
+                <div class="mb-3">
+                    <span class="badge bg-info">{{ job.get('job_type') }}</span>
+                    {% if job.get('vacancies') %}
+                    <span class="badge bg-secondary">徵 {{ job.get('vacancies') }} 人</span>
+                    {% endif %}
+                </div>
+
+                <p class="card-text">{{ (job.get('description', '')[:120] + '...') if job.get('description') and job.get('description')|length > 120 else job.get('description', '暫無描述') }}</p>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <small class="text-muted">
+                        <i class="bi bi-calendar"></i> {{ job.get('created_at', '')[:10] if job.get('created_at') else '' }}
+                    </small>
+                    <a href="{{ url_for('employment.job_detail', id=job.get('id')) }}" class="btn btn-warning btn-sm">
+                        查看詳情
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 目前沒有職缺。
+</div>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="mt-4">
+    <a href="{{ url_for('employment.my_applications') }}" class="btn btn-outline-warning">
+        <i class="bi bi-list-check"></i> 查看我的申請
+    </a>
+</div>
+{% endif %}
+{% endblock %}

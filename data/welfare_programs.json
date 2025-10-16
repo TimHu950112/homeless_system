@@ -1,0 +1,38 @@
+[
+  {
+    "name": "租金補助計畫",
+    "program_type": "rent_subsidy",
+    "description": "協助經濟弱勢族群支付租金，減輕居住負擔。",
+    "benefits": "每月補助租金3,000-6,000元",
+    "amount_min": 3000,
+    "amount_max": 6000,
+    "eligibility_criteria": "需符合低收入戶或中低收入戶資格",
+    "required_documents": "身分證、戶籍謄本、租賃契約、財產證明",
+    "organizer": "台北市社會局",
+    "contact_phone": "1999",
+    "contact_email": "welfare@taipei.gov.tw",
+    "application_start": "2025-10-16",
+    "application_end": "2026-01-14",
+    "is_active": true,
+    "id": 1,
+    "created_at": "2025-10-16T20:42:43.186052"
+  },
+  {
+    "name": "健保費補助",
+    "program_type": "health_insurance",
+    "description": "補助健保費用，確保醫療權益。",
+    "benefits": "全額或部分補助健保費",
+    "amount_min": 800,
+    "amount_max": 1400,
+    "eligibility_criteria": "低收入戶、中低收入戶",
+    "required_documents": "身分證、戶籍謄本、收入證明",
+    "organizer": "衛生福利部",
+    "contact_phone": "1999",
+    "contact_email": "nhi@mohw.gov.tw",
+    "application_start": "2025-10-16",
+    "application_end": "2026-04-14",
+    "is_active": true,
+    "id": 2,
+    "created_at": "2025-10-16T20:42:43.186111"
+  }
+]

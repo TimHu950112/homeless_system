@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}我的住宿預約 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-building"></i> 我的住宿預約</h1>
+
+{% if bookings %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>收容所</th>
+                <th>入住日期</th>
+                <th>退房日期</th>
+                <th>天數</th>
+                <th>點數</th>
+                <th>狀態</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>
+                    <strong>{{ booking.accommodation.get('name', 'N/A') }}</strong><br>
+                    <small class="text-muted">{{ booking.accommodation.get('address', '') }}</small>
+                </td>
+                <td>{{ booking.get('check_in_date', '') }}</td>
+                <td>{{ booking.get('check_out_date', '') }}</td>
+                <td>{{ booking.get('nights', 0) }} 天</td>
+                <td>
+                    {% if booking.get('status') == 'confirmed' %}
+                    <span class="text-danger">-{{ booking.get('points_used', 0) }}</span>
+                    {% else %}
+                    {{ booking.get('points_used', 0) }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if booking.get('status') == 'pending' %}
+                    <span class="badge bg-warning">待審核</span>
+                    {% elif booking.get('status') == 'confirmed' %}
+                    <span class="badge bg-success">已確認</span>
+                    {% elif booking.get('status') == 'checked_in' %}
+                    <span class="badge bg-primary">已入住</span>
+                    {% elif booking.get('status') == 'checked_out' %}
+                    <span class="badge bg-secondary">已退房</span>
+                    {% elif booking.get('status') == 'cancelled' %}
+                    <span class="badge bg-danger">已取消</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if booking.get('status') == 'pending' or booking.get('status') == 'confirmed' %}
+                    <form method="POST" action="{{ url_for('accommodation.cancel_booking', id=booking.get('id')) }}"
+                          onsubmit="return confirm('確定要取消此預約嗎？')" style="display: inline;">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            <i class="bi bi-x-circle"></i> 取消
+                        </button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 您目前沒有住宿預約記錄。
+    <a href="{{ url_for('accommodation.index') }}" class="alert-link">立即查看可用住宿</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}盥洗與洗衣服務 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-droplet"></i> 盥洗與洗衣服務</h1>
+
+<p class="lead">提供乾淨的盥洗設施與洗衣服務，維持基本衛生需求。</p>
+
+{% if facilities %}
+<div class="row g-4">
+    {% for facility in facilities %}
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ facility.get('name') }}</h5>
+
+                <p class="card-text mb-3">
+                    <i class="bi bi-geo-alt"></i> {{ facility.get('address') }}<br>
+                    <i class="bi bi-telephone"></i> {{ facility.get('contact_phone') }}<br>
+                    <i class="bi bi-clock"></i> {{ facility.get('service_hours', '請洽詢') }}
+                </p>
+
+                <div class="mb-3">
+                    {% if facility.get('has_shower') %}
+                    <span class="badge bg-primary"><i class="bi bi-droplet"></i> 淋浴</span>
+                    {% endif %}
+                    {% if facility.get('has_laundry') %}
+                    <span class="badge bg-info"><i class="bi bi-water"></i> 洗衣</span>
+                    {% endif %}
+                    {% if facility.get('has_dryer') %}
+                    <span class="badge bg-warning"><i class="bi bi-wind"></i> 烘衣</span>
+                    {% endif %}
+                    {% if facility.get('provides_toiletries') %}
+                    <span class="badge bg-success"><i class="bi bi-bag"></i> 提供盥洗用品</span>
+                    {% endif %}
+                </div>
+
+                {% if facility.get('description') %}
+                <p class="card-text"><small class="text-muted">{{ facility.get('description') }}</small></p>
+                {% endif %}
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <p class="mb-1"><strong>淋浴間：</strong></p>
+                        <p class="text-muted mb-0">{{ facility.get('shower_rooms', 0) }} 間</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="mb-1"><strong>洗衣機：</strong></p>
+                        <p class="text-muted mb-0">{{ facility.get('washing_machines', 0) }} 台</p>
+                    </div>
+                </div>
+
+                {% if facility.get('cost_per_use') %}
+                <div class="alert alert-warning py-2 px-2 mt-3">
+                    <small><i class="bi bi-star-fill"></i> 每次使用 {{ facility.get('cost_per_use') }} 點</small>
+                </div>
+                {% else %}
+                <div class="alert alert-success py-2 px-2 mt-3">
+                    <small><i class="bi bi-check-circle"></i> 免費使用</small>
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('hygiene.book', id=facility.get('id')) }}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-calendar-check"></i> 立即預約
+                </a>
+                {% else %}
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-sm">
+                    登入後預約
+                </a>
+                {% endif %}
+                <a href="{{ url_for('hygiene.detail', id=facility.get('id')) }}" class="btn btn-outline-secondary btn-sm">
+                    查看詳情
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 目前沒有盥洗設施資訊。
+</div>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="mt-4">
+    <a href="{{ url_for('hygiene.my_bookings') }}" class="btn btn-outline-primary">
+        <i class="bi bi-list-check"></i> 查看我的預約
+    </a>
+</div>
+{% endif %}
+
+<div class="alert alert-info mt-4">
+    <h5><i class="bi bi-info-circle"></i> 使用說明</h5>
+    <ul class="mb-0">
+        <li>建議提前預約，避免現場等候</li>
+        <li>請自備替換衣物</li>
+        <li>維持環境整潔，愛惜公共設施</li>
+        <li>使用時間每次限制 30 分鐘</li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}個人資料 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <i class="bi bi-person-circle" style="font-size: 5rem;"></i>
+                <h4 class="mt-3">{{ user.full_name or user.username }}</h4>
+                <p class="text-muted">@{{ user.username }}</p>
+                <div class="alert alert-warning mb-3">
+                    <h3 class="mb-0">
+                        <i class="bi bi-star-fill"></i> {{ user.points }} 點
+                    </h3>
+                </div>
+                <a href="{{ url_for('auth.edit_profile') }}" class="btn btn-primary">
+                    <i class="bi bi-pencil"></i> 編輯資料
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">基本資料</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>電話：</strong> {{ user.phone or '未提供' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>電子郵件：</strong> {{ user.email or '未提供' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>性別：</strong> {{ user.gender or '未提供' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>註冊日期：</strong> {{ user.created_at[:10] if user.created_at else '未知' }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> 點數交易記錄</h5>
+            </div>
+            <div class="card-body">
+                {% if point_transactions %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>類型</th>
+                                <th>點數</th>
+                                <th>原因</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in point_transactions %}
+                            <tr>
+                                <td>{{ transaction.get('created_at', '')[:16] if transaction.get('created_at') else '' }}</td>
+                                <td>
+                                    {% if transaction.get('transaction_type') == 'earn' %}
+                                    <span class="badge bg-success">獲得</span>
+                                    {% else %}
+                                    <span class="badge bg-danger">使用</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if transaction.get('amount', 0) > 0 %}
+                                    <span class="text-success">+{{ transaction.get('amount') }}</span>
+                                    {% else %}
+                                    <span class="text-danger">{{ transaction.get('amount') }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ transaction.get('reason', '') }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted">尚無點數交易記錄。</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-building text-primary" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">住宿預約</h5>
+                        <a href="{{ url_for('accommodation.my_bookings') }}" class="btn btn-sm btn-outline-primary">查看</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-book text-info" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">我的課程</h5>
+                        <a href="{{ url_for('courses.my_courses') }}" class="btn btn-sm btn-outline-info">查看</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-briefcase text-warning" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">工作申請</h5>
+                        <a href="{{ url_for('employment.my_applications') }}" class="btn btn-sm btn-outline-warning">查看</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-shield-check text-danger" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">福利申請</h5>
+                        <a href="{{ url_for('welfare.my_applications') }}" class="btn btn-sm btn-outline-danger">查看</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}管理後台 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-gear"></i> 管理後台</h1>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card text-center border-primary">
+            <div class="card-body">
+                <i class="bi bi-people text-primary" style="font-size: 2.5rem;"></i>
+                <h3 class="mt-2">{{ total_users }}</h3>
+                <p class="text-muted mb-0">總用戶數</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center border-success">
+            <div class="card-body">
+                <i class="bi bi-calendar-check text-success" style="font-size: 2.5rem;"></i>
+                <h3 class="mt-2">{{ total_bookings }}</h3>
+                <p class="text-muted mb-0">總預約數</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center border-warning">
+            <div class="card-body">
+                <i class="bi bi-clock text-warning" style="font-size: 2.5rem;"></i>
+                <h3 class="mt-2">{{ pending_bookings }}</h3>
+                <p class="text-muted mb-0">待審核預約</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center border-info">
+            <div class="card-body">
+                <i class="bi bi-star text-info" style="font-size: 2.5rem;"></i>
+                <h3 class="mt-2">{{ total_points }}</h3>
+                <p class="text-muted mb-0">總點數流通</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> 最新住宿預約</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% if recent_bookings %}
+                        {% for booking in recent_bookings %}
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-1">{{ booking.user_name }}</h6>
+                                <small class="text-muted">{{ booking.get('created_at', '')[:10] if booking.get('created_at') else '' }}</small>
+                            </div>
+                            <p class="mb-1 small">{{ booking.accommodation_name }}</p>
+                            <span class="badge bg-{{ 'warning' if booking.get('status') == 'pending' else 'success' }}">
+                                {{ booking.get('status') }}
+                            </span>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">暫無預約記錄</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-person-plus"></i> 最新註冊用戶</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% if recent_users %}
+                        {% for user in recent_users %}
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-1">{{ user.get('username') }}</h6>
+                                <small class="text-muted">{{ user.get('created_at', '')[:10] if user.get('created_at') else '' }}</small>
+                            </div>
+                            <p class="mb-1 small">{{ user.get('email', '未提供') }}</p>
+                            <span class="badge bg-info">{{ user.get('user_type', 'beneficiary') }}</span>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">暫無新用戶</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-list-check"></i> 快速操作</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-primary w-100">
+                            <i class="bi bi-people"></i><br>用戶管理
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-success w-100">
+                            <i class="bi bi-building"></i><br>住宿管理
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-info w-100">
+                            <i class="bi bi-book"></i><br>課程管理
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-warning w-100">
+                            <i class="bi bi-briefcase"></i><br>職缺管理
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

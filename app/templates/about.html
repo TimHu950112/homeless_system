@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}關於我們 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">關於無家者服務整合平台</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">我們的使命</h3>
+                <p class="lead">為無家者提供全方位、整合性的社會服務，協助他們重建生活、恢復尊嚴。</p>
+                <p>無家者服務整合平台致力於打造一個完整的服務生態系統，涵蓋住宿、餐食、醫療、教育、就業及福利補助等面向，透過科技與社工的結合，提供更有效率、更具人性化的服務。</p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">服務項目</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-building text-primary" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">住宿服務</h5>
+                            <p class="text-muted">提供安全、乾淨的臨時住宿空間</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-basket text-success" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">餐食服務</h5>
+                            <p class="text-muted">供應營養均衡的三餐</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-heart-pulse text-danger" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">醫療服務</h5>
+                            <p class="text-muted">基本醫療照護與心理諮商</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-book text-info" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">教育培訓</h5>
+                            <p class="text-muted">職業技能培訓與生活教育</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-briefcase text-warning" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">就業媒合</h5>
+                            <p class="text-muted">協助重返職場、經濟獨立</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <i class="bi bi-shield-check text-secondary" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">福利補助</h5>
+                            <p class="text-muted">政府與民間福利資源整合</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">點數制度</h3>
+                <p>為了鼓勵受助者積極參與各項服務，我們設計了點數獎勵機制：</p>
+                <ul>
+                    <li><strong>獲得點數</strong>：參加培訓課程、從事工作、參與志願服務</li>
+                    <li><strong>使用點數</strong>：預約住宿、兌換物資、延長服務期限</li>
+                    <li><strong>目的</strong>：培養自立精神，提升自我價值感</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">聯絡我們</h3>
+                <p>如果您需要協助或有任何疑問，請隨時與我們聯繫：</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-telephone"></i> <strong>24小時求助專線：</strong>1999</li>
+                    <li><i class="bi bi-envelope"></i> <strong>電子郵件：</strong>service@homeless.org.tw</li>
+                    <li><i class="bi bi-geo-alt"></i> <strong>地址：</strong>台北市中正區重慶南路一段122號</li>
+                </ul>
+                <a href="{{ url_for('main.contact') }}" class="btn btn-primary mt-3">
+                    <i class="bi bi-envelope"></i> 聯絡我們
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

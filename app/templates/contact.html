@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}聯絡我們 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4">聯絡我們</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">需要協助嗎？</h3>
+                <p>無論您是需要服務的朋友，或是想要了解更多資訊，我們都非常樂意為您服務。</p>
+
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">姓名 *</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">電子郵件</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">聯絡電話 *</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">主旨 *</label>
+                        <select class="form-select" id="subject" required>
+                            <option value="">請選擇...</option>
+                            <option value="住宿">住宿服務諮詢</option>
+                            <option value="餐食">餐食服務諮詢</option>
+                            <option value="醫療">醫療服務諮詢</option>
+                            <option value="就業">就業服務諮詢</option>
+                            <option value="福利">福利補助諮詢</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">訊息內容 *</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-send"></i> 送出訊息
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-primary text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-telephone"></i> 24小時求助專線</h5>
+                <h2 class="mb-0">1999</h2>
+                <p class="mb-0"><small>全年無休，隨時為您服務</small></p>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-envelope"></i> 電子郵件</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>一般諮詢：</strong><br>service@homeless.org.tw</p>
+                <p class="mb-0"><strong>緊急聯絡：</strong><br>emergency@homeless.org.tw</p>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-geo-alt"></i> 服務地點</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>主辦公室：</strong><br>台北市中正區重慶南路一段122號</p>
+                <p class="mb-0"><strong>服務時間：</strong><br>週一至週五 09:00-18:00<br>週六 09:00-12:00</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> 其他資源</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>衛生福利部：</strong><br>1957福利諮詢專線</p>
+                <p class="mb-0"><strong>內政部：</strong><br>遊民服務專線 1999</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

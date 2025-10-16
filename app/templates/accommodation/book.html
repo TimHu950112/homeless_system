@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}預約住宿 - {{ accommodation.get('name') }}{% endblock %}
+{% block content %}
+<h1>預約住宿：{{ accommodation.get('name') }}</h1>
+<form method="POST">
+    <div class="mb-3">
+        <label for="check_in_date" class="form-label">入住日期</label>
+        <input type="date" class="form-control" id="check_in_date" name="check_in_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="check_out_date" class="form-label">退房日期</label>
+        <input type="date" class="form-control" id="check_out_date" name="check_out_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="notes" class="form-label">備註</label>
+        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">提交預約</button>
+    <a href="{{ url_for('accommodation.index') }}" class="btn btn-secondary">取消</a>
+</form>
+{% endblock %}

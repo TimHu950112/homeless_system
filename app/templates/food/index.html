@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}餐食服務 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5" data-aos="fade-down">
+    <h1 class="display-4 gradient-text mb-3">
+        <i class="bi bi-basket me-2"></i>餐食服務
+    </h1>
+    <p class="lead text-muted">提供營養均衡的餐食，確保您的基本生活需求</p>
+</div>
+
+{% if providers %}
+<div class="row g-4">
+    {% for provider in providers %}
+    <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+        <div class="card h-100 glow-on-hover">
+            <div class="card-body">
+                <h5 class="card-title">{{ provider.get('name') }}</h5>
+
+                <p class="card-text mb-3">
+                    <i class="bi bi-geo-alt"></i> {{ provider.get('address') }}<br>
+                    <i class="bi bi-telephone"></i> {{ provider.get('contact_phone') }}<br>
+                    <i class="bi bi-clock"></i> {{ provider.get('service_hours', '請洽詢') }}
+                </p>
+
+                <div class="mb-3">
+                    <span class="badge bg-success">{{ provider.get('meal_type', '一般餐') }}</span>
+                    {% if provider.get('provides_breakfast') %}
+                    <span class="badge bg-info">早餐</span>
+                    {% endif %}
+                    {% if provider.get('provides_lunch') %}
+                    <span class="badge bg-warning">午餐</span>
+                    {% endif %}
+                    {% if provider.get('provides_dinner') %}
+                    <span class="badge bg-primary">晚餐</span>
+                    {% endif %}
+                </div>
+
+                {% if provider.get('description') %}
+                <p class="card-text"><small class="text-muted">{{ provider.get('description') }}</small></p>
+                {% endif %}
+
+                {% if provider.get('requirements') %}
+                <div class="alert alert-info py-2 px-2">
+                    <small><strong>領取條件：</strong>{{ provider.get('requirements') }}</small>
+                </div>
+                {% endif %}
+
+                <div class="mt-3">
+                    <small class="text-muted">
+                        每日供應 {{ provider.get('daily_capacity', '不限') }} 份
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 目前沒有餐食供應點。
+</div>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="mt-5 text-center" data-aos="fade-up">
+    <a href="{{ url_for('food.my_vouchers') }}" class="btn btn-success btn-lg px-5 shadow">
+        <i class="bi bi-ticket-perforated me-2"></i> 查看我的餐券
+    </a>
+</div>
+{% endif %}
+
+<div class="alert alert-warning mt-5 shadow-sm" data-aos="zoom-in">
+    <div class="d-flex align-items-start">
+        <div class="me-3" style="font-size: 2rem;">
+            <i class="bi bi-lightbulb text-warning"></i>
+        </div>
+        <div>
+            <h5 class="mb-3">
+                <i class="bi bi-info-circle me-2"></i>溫馨提醒
+            </h5>
+            <ul class="mb-0">
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>請攜帶個人證件領取餐食</li>
+                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>遵守現場秩序，尊重工作人員</li>
+                <li class="mb-0"><i class="bi bi-check-circle text-success me-2"></i>珍惜食物，避免浪費</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

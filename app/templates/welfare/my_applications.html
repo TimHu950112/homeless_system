@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}我的福利申請 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-shield-check"></i> 我的福利申請</h1>
+
+{% if applications %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>福利項目</th>
+                <th>補助金額</th>
+                <th>申請日期</th>
+                <th>狀態</th>
+                <th>審核結果</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>
+                    <strong>{{ application.program.get('name', 'N/A') }}</strong><br>
+                    <small class="text-muted">{{ application.program.get('category', '') }}</small>
+                </td>
+                <td class="text-success">${{ application.program.get('subsidy_amount', 0) }}</td>
+                <td>{{ application.get('created_at', '')[:10] if application.get('created_at') else '未知' }}</td>
+                <td>
+                    {% if application.get('status') == 'pending' %}
+                    <span class="badge bg-warning">待審核</span>
+                    {% elif application.get('status') == 'approved' %}
+                    <span class="badge bg-success">已核准</span>
+                    {% elif application.get('status') == 'rejected' %}
+                    <span class="badge bg-danger">未核准</span>
+                    {% elif application.get('status') == 'under_review' %}
+                    <span class="badge bg-info">審核中</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if application.get('review_notes') %}
+                    {{ application.get('review_notes') }}
+                    {% else %}
+                    -
+                    {% endif %}
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ application.get('id') }}">
+                        <i class="bi bi-eye"></i> 詳情
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 您目前沒有福利申請記錄。
+    <a href="{{ url_for('welfare.index') }}" class="alert-link">立即查看福利補助</a>
+</div>
+{% endif %}
+{% endblock %}

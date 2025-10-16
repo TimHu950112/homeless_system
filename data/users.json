@@ -1,0 +1,47 @@
+[
+  {
+    "username": "user1",
+    "password_hash": "scrypt:32768:8:1$UK1OFsuVfKxbVIUG$14c1154ec810f6c0290ead5986870db48e1888e83e78fef04f2117018524d76130877bb86e21608d1043f400722601799c9aed49fe9b37ce4639fde8a9cc964e",
+    "full_name": "王小明",
+    "phone": "0912345678",
+    "gender": "男性",
+    "user_type": "beneficiary",
+    "points": 100,
+    "is_active": true,
+    "id": 1,
+    "created_at": "2025-10-16T20:42:43.184379"
+  },
+  {
+    "username": "user2",
+    "password_hash": "scrypt:32768:8:1$m1u10GFDKzx0nClc$359be56ce6b8a18c1cfc54d0f807f6371c70e5eee828203affb95a6004035fec3b18395de3370d770c4c12c9d7bac6a5df5d064808278f93753eb9870277b383",
+    "full_name": "李小花",
+    "phone": "0923456789",
+    "gender": "女性",
+    "user_type": "beneficiary",
+    "points": 50,
+    "is_active": true,
+    "id": 2,
+    "created_at": "2025-10-16T20:42:43.184805"
+  },
+  {
+    "username": "social_worker",
+    "password_hash": "scrypt:32768:8:1$Vum1sNLRpnGwXD5S$6a486fdc08315a0d505fcf3af61ce30bb865df5b0fc2e424343fde2c930e3e18b3f222aeaa788255457e480620db248e47878337c6c5b8c230cae097c29c813f",
+    "full_name": "張社工",
+    "phone": "0934567890",
+    "user_type": "social_worker",
+    "points": 0,
+    "is_active": true,
+    "id": 3,
+    "created_at": "2025-10-16T20:42:43.184940"
+  },
+  {
+    "username": "admin",
+    "password_hash": "scrypt:32768:8:1$yZj16XFDHFap5pjM$53b17ebf307b421802dd887e665aa4f34d1a327fc2952885427da6895cc31c06fe572c157da941d247070dd4912e7e9a377e95a4ad1f8bdfc66f409ce0b335b6",
+    "full_name": "系統管理員",
+    "user_type": "admin",
+    "points": 0,
+    "is_active": true,
+    "id": 4,
+    "created_at": "2025-10-16T20:42:43.185069"
+  }
+]

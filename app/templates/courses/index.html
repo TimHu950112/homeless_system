@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}課程教育 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-book"></i> 課程教育</h1>
+
+<p class="lead">提供各類職業技能培訓與生活教育課程，完成課程可獲得點數獎勵。</p>
+
+{% if courses %}
+<div class="row g-4">
+    {% for course in courses %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            {% if course.get('image_url') %}
+            <img src="{{ course.get('image_url') }}" class="card-img-top" alt="{{ course.get('title') }}">
+            {% else %}
+            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <i class="bi bi-book" style="font-size: 3rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ course.get('title') }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">
+                        <i class="bi bi-person"></i> {{ course.get('instructor') }}<br>
+                        <i class="bi bi-calendar"></i> {{ course.get('start_date', 'TBD') }} - {{ course.get('end_date', 'TBD') }}<br>
+                        <i class="bi bi-geo-alt"></i> {{ course.get('location', '待定') }}<br>
+                        <i class="bi bi-people"></i> {{ course.get('enrolled_students', 0) }}/{{ course.get('max_students', 0) }} 人
+                    </small>
+                </p>
+                <p class="card-text">{{ (course.get('description', '')[:100] + '...') if course.get('description') and course.get('description')|length > 100 else course.get('description', '暫無描述') }}</p>
+
+                {% if course.get('completion_points') %}
+                <div class="alert alert-success py-1 px-2 mb-2">
+                    <small><i class="bi bi-star-fill"></i> 完成可獲 {{ course.get('completion_points') }} 點</small>
+                </div>
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        {% if course.get('enrolled_students', 0) >= course.get('max_students', 0) %}
+                        <span class="badge bg-danger">名額已滿</span>
+                        {% else %}
+                        <span class="badge bg-success">可報名</span>
+                        {% endif %}
+                    </div>
+                    <a href="{{ url_for('courses.detail', id=course.get('id')) }}" class="btn btn-primary btn-sm">
+                        查看詳情
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 目前沒有開設課程。
+</div>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="mt-4">
+    <a href="{{ url_for('courses.my_courses') }}" class="btn btn-outline-primary">
+        <i class="bi bi-list-check"></i> 查看我的課程
+    </a>
+</div>
+{% endif %}
+{% endblock %}

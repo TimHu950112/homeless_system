@@ -1,0 +1,20 @@
+[
+  {
+    "name": "台北車站盥洗中心",
+    "address": "台北市中正區北平西路3號",
+    "district": "中正區",
+    "has_shower": true,
+    "has_laundry": true,
+    "total_shower_rooms": 10,
+    "total_washing_machines": 6,
+    "has_male_section": true,
+    "has_female_section": true,
+    "has_accessible_section": true,
+    "opening_hours": "06:00-22:00",
+    "contact_phone": "02-2311-1234",
+    "description": "提供淋浴、洗衣與基本盥洗用品。",
+    "is_active": true,
+    "id": 1,
+    "created_at": "2025-10-16T20:42:43.185415"
+  }
+]

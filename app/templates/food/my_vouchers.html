@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}我的餐券 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-basket"></i> 我的餐券</h1>
+
+{% if vouchers %}
+<div class="row g-3">
+    {% for voucher in vouchers %}
+    <div class="col-md-4">
+        <div class="card {% if voucher.get('is_used') %}border-secondary{% else %}border-success{% endif %}">
+            <div class="card-header {% if voucher.get('is_used') %}bg-secondary text-white{% else %}bg-success text-white{% endif %}">
+                <h5 class="mb-0">
+                    {% if voucher.get('is_used') %}
+                    <i class="bi bi-check-circle"></i> 已使用
+                    {% else %}
+                    <i class="bi bi-ticket-perforated"></i> 未使用
+                    {% endif %}
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>餐券編號：</strong>#{{ voucher.get('id') }}</p>
+                <p class="mb-2"><strong>餐點類型：</strong>{{ voucher.get('meal_type', '一般餐') }}</p>
+                <p class="mb-2"><strong>發放日期：</strong>{{ voucher.get('issued_date', '')[:10] if voucher.get('issued_date') else '未知' }}</p>
+                <p class="mb-2"><strong>有效期限：</strong>{{ voucher.get('expiry_date', '')[:10] if voucher.get('expiry_date') else '未知' }}</p>
+                {% if voucher.get('is_used') %}
+                <p class="mb-0"><strong>使用日期：</strong>{{ voucher.get('used_date', '')[:10] if voucher.get('used_date') else '未知' }}</p>
+                <p class="mb-0"><strong>使用地點：</strong>{{ voucher.get('provider_name', '未記錄') }}</p>
+                {% endif %}
+            </div>
+            {% if not voucher.get('is_used') %}
+            <div class="card-footer">
+                <small class="text-muted">請至合作餐廳出示此餐券使用</small>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> 您目前沒有餐券。
+    <a href="{{ url_for('food.index') }}" class="alert-link">查看餐食供應點</a>
+</div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{{ url_for('food.index') }}" class="btn btn-primary">
+        <i class="bi bi-arrow-left"></i> 返回餐食服務
+    </a>
+</div>
+{% endblock %}

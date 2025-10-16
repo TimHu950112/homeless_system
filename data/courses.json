@@ -1,0 +1,42 @@
+[
+  {
+    "title": "電腦基礎操作班",
+    "category": "skill_training",
+    "instructor": "林老師",
+    "organizer": "台北市勞動力發展局",
+    "description": "學習基本電腦操作，包含文書處理、網路搜尋等技能。",
+    "start_date": "2025-10-23",
+    "end_date": "2025-11-22",
+    "schedule": "每週一、三、五 14:00-16:00",
+    "location": "台北市職訓中心",
+    "address": "台北市中正區羅斯福路一段4號",
+    "max_participants": 20,
+    "enrolled_count": 5,
+    "delivery_mode": "in_person",
+    "completion_points": 50,
+    "attendance_requirement": 0.8,
+    "is_active": true,
+    "id": 1,
+    "created_at": "2025-10-16T20:42:43.185625"
+  },
+  {
+    "title": "手作文創工作坊",
+    "category": "art_craft",
+    "instructor": "陳老師",
+    "organizer": "社團法人台北市創意發展協會",
+    "description": "學習各種手工藝技能，製作可販售的文創商品。",
+    "start_date": "2025-10-30",
+    "end_date": "2025-11-29",
+    "schedule": "每週二、四 10:00-12:00",
+    "location": "萬華社區活動中心",
+    "address": "台北市萬華區昆明街100號",
+    "max_participants": 15,
+    "enrolled_count": 3,
+    "delivery_mode": "in_person",
+    "completion_points": 40,
+    "attendance_requirement": 0.8,
+    "is_active": true,
+    "id": 2,
+    "created_at": "2025-10-16T20:42:43.185722"
+  }
+]

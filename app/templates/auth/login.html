@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}登入 - 無家者服務整合平台{% endblock %}
+
+{% block extra_css %}
+<style>
+    .login-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+        border: none !important;
+    }
+
+    .login-header {
+        background: var(--gradient-primary);
+        padding: 2rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .login-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 2.5rem;
+        animation: pulse 2s infinite;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-5" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="card login-card shadow-lg glow-on-hover">
+                <div class="login-header text-white text-center">
+                    <div class="login-icon">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <h2 class="mb-0 fw-bold">歡迎回來</h2>
+                    <p class="mb-0 mt-2">登入您的帳戶</p>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="{{ url_for('auth.login') }}">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="username" name="username"
+                                   placeholder="請輸入帳號" required>
+                            <label for="username">
+                                <i class="bi bi-person me-2"></i>帳號
+                            </label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="請輸入密碼" required>
+                            <label for="password">
+                                <i class="bi bi-lock me-2"></i>密碼
+                            </label>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>登入
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Quick Login Hints -->
+                    <div class="alert alert-info mt-4" data-aos="fade-up" data-aos-delay="200">
+                        <h6 class="mb-2"><i class="bi bi-info-circle me-2"></i>測試帳號</h6>
+                        <small class="d-block mb-1"><strong>一般用戶:</strong> user1 / password123</small>
+                        <small class="d-block mb-1"><strong>社工:</strong> social_worker / password123</small>
+                        <small class="d-block"><strong>管理員:</strong> admin / admin123</small>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-transparent border-0 pb-4">
+                    <p class="mb-0">
+                        還沒有帳號？
+                        <a href="{{ url_for('auth.register') }}" class="text-decoration-none fw-bold">
+                            立即註冊 <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

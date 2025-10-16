@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+
+{% block title %}首頁 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="jumbotron p-5 rounded-3 mb-5 shimmer" data-aos="fade-down" data-aos-duration="1000">
+    <div class="container-fluid text-center">
+        <h1 class="display-3 fw-bold mb-3 float">
+            <i class="bi bi-house-heart-fill me-3"></i>
+            歡迎使用無家者服務整合平台
+        </h1>
+        <p class="lead fs-4 mb-4">我們提供住宿、餐食、醫療、就業與福利等全方位服務，協助您重建生活。</p>
+        {% if not current_user.is_authenticated %}
+        <hr class="my-4 border-white" style="opacity: 0.3;">
+        <p class="fs-5 mb-4">立即註冊，開始使用各項服務。</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a class="btn btn-light btn-lg px-5 shadow" href="{{ url_for('auth.register') }}" role="button">
+                <i class="bi bi-person-plus me-2"></i> 立即註冊
+            </a>
+            <a class="btn btn-outline-light btn-lg px-5" href="{{ url_for('auth.login') }}" role="button">
+                <i class="bi bi-box-arrow-in-right me-2"></i> 登入
+            </a>
+        </div>
+        {% else %}
+        <div class="alert alert-light d-inline-block shadow-sm" data-aos="zoom-in" data-aos-delay="200">
+            <h5 class="mb-0">
+                <i class="bi bi-person-check text-success me-2"></i>
+                歡迎回來，<strong>{{ current_user.full_name or current_user.username }}</strong>！
+                <span class="badge bg-warning text-dark ms-2">
+                    <i class="bi bi-star-fill"></i> {{ current_user.points }} 點
+                </span>
+            </h5>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Service Statistics -->
+<div class="row mb-4" data-aos="fade-up">
+    <div class="col-md-12 text-center">
+        <h2 class="mb-4 gradient-text">
+            <i class="bi bi-graph-up me-2"></i>服務資源統計
+        </h2>
+    </div>
+</div>
+<div class="row g-4 mb-5">
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-primary bg-opacity-10">
+                    <i class="bi bi-building text-primary"></i>
+                </div>
+                <h3 class="card-title mt-3 counter text-primary">{{ total_accommodations }}</h3>
+                <p class="card-text fw-bold text-muted">收容所與住宿點</p>
+                <a href="{{ url_for('accommodation.index') }}" class="btn btn-primary">
+                    <i class="bi bi-arrow-right me-2"></i>查看住宿
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-success bg-opacity-10">
+                    <i class="bi bi-basket text-success"></i>
+                </div>
+                <h3 class="card-title mt-3 counter text-success">{{ total_food_providers }}</h3>
+                <p class="card-text fw-bold text-muted">餐食供應點</p>
+                <a href="{{ url_for('food.index') }}" class="btn btn-success">
+                    <i class="bi bi-arrow-right me-2"></i>查看餐食
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-info bg-opacity-10">
+                    <i class="bi bi-book text-info"></i>
+                </div>
+                <h3 class="card-title mt-3 counter text-info">{{ total_courses }}</h3>
+                <p class="card-text fw-bold text-muted">培訓課程</p>
+                <a href="{{ url_for('courses.index') }}" class="btn btn-info">
+                    <i class="bi bi-arrow-right me-2"></i>查看課程
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-warning bg-opacity-10">
+                    <i class="bi bi-briefcase text-warning"></i>
+                </div>
+                <h3 class="card-title mt-3 counter text-warning">{{ total_jobs }}</h3>
+                <p class="card-text fw-bold text-muted">就業機會</p>
+                <a href="{{ url_for('employment.index') }}" class="btn btn-warning">
+                    <i class="bi bi-arrow-right me-2"></i>查看職缺
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-danger bg-opacity-10">
+                    <i class="bi bi-shield-check text-danger"></i>
+                </div>
+                <h3 class="card-title mt-3 counter text-danger">{{ total_welfare }}</h3>
+                <p class="card-text fw-bold text-muted">福利補助項目</p>
+                <a href="{{ url_for('welfare.index') }}" class="btn btn-danger">
+                    <i class="bi bi-arrow-right me-2"></i>查看福利
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="card text-center h-100 stats-card">
+            <div class="card-body">
+                <div class="service-icon bg-secondary bg-opacity-10">
+                    <i class="bi bi-heart-pulse text-secondary"></i>
+                </div>
+                <h3 class="card-title mt-3 fw-bold text-secondary" style="font-size: 2rem;">全方位</h3>
+                <p class="card-text fw-bold text-muted">醫療與心理諮商</p>
+                <a href="{{ url_for('health.index') }}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-right me-2"></i>查看醫療
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Courses -->
+{% if recent_courses %}
+<div class="row mb-4" data-aos="fade-up">
+    <div class="col-md-12 text-center">
+        <h2 class="mb-4 gradient-text">
+            <i class="bi bi-book me-2"></i>最新課程
+        </h2>
+    </div>
+</div>
+<div class="row g-4 mb-5">
+    {% for course in recent_courses %}
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="card h-100 glow-on-hover">
+            {% if course.get('image_url') %}
+            <img src="{{ course.get('image_url') }}" class="card-img-top" alt="{{ course.get('title') }}">
+            {% else %}
+            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <i class="bi bi-book" style="font-size: 3rem;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ course.get('title') }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">
+                        <i class="bi bi-person"></i> {{ course.get('instructor') }}<br>
+                        <i class="bi bi-calendar"></i> {{ course.get('start_date', 'TBD') }}
+                    </small>
+                </p>
+                <p class="card-text">{{ (course.get('description', '')[:100] + '...') if course.get('description') else '' }}</p>
+                <a href="{{ url_for('courses.detail', id=course.get('id')) }}" class="btn btn-primary btn-sm">查看詳情</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Recent Jobs -->
+{% if recent_jobs %}
+<div class="row mb-4" data-aos="fade-up">
+    <div class="col-md-12 text-center">
+        <h2 class="mb-4 gradient-text">
+            <i class="bi bi-briefcase me-2"></i>最新工作機會
+        </h2>
+    </div>
+</div>
+<div class="row g-4 mb-5">
+    {% for job in recent_jobs %}
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="card h-100 glow-on-hover">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.get('title') }}</h5>
+                <p class="card-text">
+                    <span class="badge bg-info">{{ job.get('job_type') }}</span><br>
+                    <small class="text-muted">
+                        <i class="bi bi-building"></i> {{ job.get('employer') }}<br>
+                        <i class="bi bi-geo-alt"></i> {{ job.get('location') }}<br>
+                        <i class="bi bi-currency-dollar"></i> ${{ job.get('salary_min') }}-{{ job.get('salary_max') }}
+                    </small>
+                </p>
+                <a href="{{ url_for('employment.job_detail', id=job.get('id')) }}" class="btn btn-warning btn-sm">查看詳情</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Points System Info -->
+<div class="alert alert-info shadow-lg" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="d-flex align-items-center">
+        <div class="me-3" style="font-size: 3rem;">
+            <i class="bi bi-star-fill text-warning"></i>
+        </div>
+        <div>
+            <h4 class="mb-2">
+                <i class="bi bi-trophy me-2"></i>點數系統
+            </h4>
+            <p class="mb-0">參與工作、培訓或志願服務可獲得點數，點數可用於延長住宿期或兌換物資。立即註冊開始累積點數！</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
