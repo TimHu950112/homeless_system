@@ -1,0 +1,397 @@
+{% extends "base.html" %}
+
+{% block title %}API 文件 - 無家者服務整合平台{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4"><i class="bi bi-code-slash"></i> API 文件</h1>
+        <p class="lead">本頁面提供平台所有 API 端點的說明與使用方式。</p>
+
+        <!-- 目錄 -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">快速導覽</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li><a href="#auth">認證與使用者</a></li>
+                            <li><a href="#accommodation">住宿服務</a></li>
+                            <li><a href="#hygiene">盥洗與洗衣</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li><a href="#food">餐食服務</a></li>
+                            <li><a href="#courses">課程服務</a></li>
+                            <li><a href="#health">醫療服務</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li><a href="#employment">就業服務</a></li>
+                            <li><a href="#welfare">福利補助</a></li>
+                            <li><a href="#admin">後台管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 認證與使用者 -->
+        <div class="card mb-4" id="auth">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="bi bi-person-lock"></i> 認證與使用者 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/auth/login</code></h5>
+                    <p><strong>說明：</strong>顯示登入頁面</p>
+                    <p><strong>權限：</strong>公開</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-warning">POST</span> <code>/auth/login</code></h5>
+                    <p><strong>說明：</strong>處理使用者登入</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>username</code> (string, 必填) - 使用者名稱</li>
+                        <li><code>password</code> (string, 必填) - 密碼</li>
+                    </ul>
+                    <p><strong>權限：</strong>公開</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/auth/register</code></h5>
+                    <p><strong>說明：</strong>顯示註冊頁面</p>
+                    <p><strong>權限：</strong>公開</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-warning">POST</span> <code>/auth/register</code></h5>
+                    <p><strong>說明：</strong>處理新使用者註冊</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>username</code> (string, 必填) - 使用者名稱</li>
+                        <li><code>password</code> (string, 必填) - 密碼</li>
+                        <li><code>full_name</code> (string, 必填) - 真實姓名</li>
+                        <li><code>email</code> (string, 選填) - 電子郵件</li>
+                        <li><code>phone</code> (string, 選填) - 電話號碼</li>
+                    </ul>
+                    <p><strong>權限：</strong>公開</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/auth/logout</code></h5>
+                    <p><strong>說明：</strong>登出當前使用者</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/auth/profile</code></h5>
+                    <p><strong>說明：</strong>查看個人資料</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <span class="badge bg-warning">POST</span> <code>/auth/profile/edit</code></h5>
+                    <p><strong>說明：</strong>編輯個人資料</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 住宿服務 -->
+        <div class="card mb-4" id="accommodation">
+            <div class="card-header bg-info text-white">
+                <h3 class="mb-0"><i class="bi bi-building"></i> 住宿服務 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/accommodation/</code></h5>
+                    <p><strong>說明：</strong>列出所有可用的住宿設施</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/accommodation/&lt;id&gt;</code></h5>
+                    <p><strong>說明：</strong>查看特定住宿設施的詳細資訊</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 住宿設施 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <span class="badge bg-warning">POST</span> <code>/accommodation/&lt;id&gt;/book</code></h5>
+                    <p><strong>說明：</strong>預約住宿</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 住宿設施 ID</li>
+                        <li><code>check_in_date</code> (date) - 入住日期</li>
+                        <li><code>check_out_date</code> (date) - 退房日期</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/accommodation/my-bookings</code></h5>
+                    <p><strong>說明：</strong>查看我的住宿預約紀錄</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-warning">POST</span> <code>/accommodation/booking/&lt;id&gt;/cancel</code></h5>
+                    <p><strong>說明：</strong>取消住宿預約</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 預約 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 盥洗與洗衣 -->
+        <div class="card mb-4" id="hygiene">
+            <div class="card-header bg-secondary text-white">
+                <h3 class="mb-0"><i class="bi bi-droplet"></i> 盥洗與洗衣 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/hygiene/</code></h5>
+                    <p><strong>說明：</strong>列出所有盥洗與洗衣設施</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/hygiene/&lt;id&gt;</code></h5>
+                    <p><strong>說明：</strong>查看特定設施的詳細資訊</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <span class="badge bg-warning">POST</span> <code>/hygiene/&lt;id&gt;/book</code></h5>
+                    <p><strong>說明：</strong>預約盥洗或洗衣服務</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 設施 ID</li>
+                        <li><code>booking_date</code> (date) - 預約日期</li>
+                        <li><code>time_slot</code> (string) - 時段</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/hygiene/my-bookings</code></h5>
+                    <p><strong>說明：</strong>查看我的預約紀錄</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 餐食服務 -->
+        <div class="card mb-4" id="food">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0"><i class="bi bi-basket"></i> 餐食服務 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/food/</code></h5>
+                    <p><strong>說明：</strong>查看餐食服務首頁與發放點列表</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/food/my-vouchers</code></h5>
+                    <p><strong>說明：</strong>查看我的餐券</p>
+                    <p><strong>返回：</strong>包含未使用、已使用、已過期的餐券列表</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/food/voucher/&lt;voucher_id&gt;/qrcode</code></h5>
+                    <p><strong>說明：</strong>產生餐券的 QR Code 圖片</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>voucher_id</code> (integer) - 餐券 ID</li>
+                    </ul>
+                    <p><strong>返回：</strong>PNG 圖片</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <span class="badge bg-warning">POST</span> <code>/food/verify-voucher</code></h5>
+                    <p><strong>說明：</strong>核銷餐券（供餐點提供者使用）</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>voucher_code</code> (string) - 餐券代碼</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入（供餐點提供者）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 課程服務 -->
+        <div class="card mb-4" id="courses">
+            <div class="card-header bg-warning text-dark">
+                <h3 class="mb-0"><i class="bi bi-book"></i> 課程服務 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/courses/</code></h5>
+                    <p><strong>說明：</strong>列出所有可用課程</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/courses/&lt;id&gt;</code></h5>
+                    <p><strong>說明：</strong>查看課程詳細資訊</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 課程 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-warning">POST</span> <code>/courses/&lt;id&gt;/enroll</code></h5>
+                    <p><strong>說明：</strong>報名課程</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 課程 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/courses/my-courses</code></h5>
+                    <p><strong>說明：</strong>查看我的課程</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 醫療服務 -->
+        <div class="card mb-4" id="health">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0"><i class="bi bi-heart-pulse"></i> 醫療服務 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/health/</code></h5>
+                    <p><strong>說明：</strong>醫療服務首頁</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <p class="text-muted">更多醫療相關 API 端點...</p>
+            </div>
+        </div>
+
+        <!-- 就業服務 -->
+        <div class="card mb-4" id="employment">
+            <div class="card-header" style="background-color: #6c757d; color: white;">
+                <h3 class="mb-0"><i class="bi bi-briefcase"></i> 就業服務 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/employment/</code></h5>
+                    <p><strong>說明：</strong>列出所有工作機會</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/employment/job/&lt;id&gt;</code></h5>
+                    <p><strong>說明：</strong>查看工作詳細資訊</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 工作 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-warning">POST</span> <code>/employment/job/&lt;id&gt;/apply</code></h5>
+                    <p><strong>說明：</strong>申請工作</p>
+                    <p><strong>參數：</strong></p>
+                    <ul>
+                        <li><code>id</code> (integer) - 工作 ID</li>
+                    </ul>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/employment/my-applications</code></h5>
+                    <p><strong>說明：</strong>查看我的工作申請</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 福利補助 -->
+        <div class="card mb-4" id="welfare">
+            <div class="card-header" style="background-color: #17a2b8; color: white;">
+                <h3 class="mb-0"><i class="bi bi-shield-check"></i> 福利補助 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/welfare/</code></h5>
+                    <p><strong>說明：</strong>列出所有福利補助項目</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/welfare/my-applications</code></h5>
+                    <p><strong>說明：</strong>查看我的福利申請</p>
+                    <p><strong>權限：</strong>需要登入</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 後台管理 -->
+        <div class="card mb-4" id="admin">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0"><i class="bi bi-gear"></i> 後台管理 API</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5><span class="badge bg-success">GET</span> <code>/admin/</code></h5>
+                    <p><strong>說明：</strong>後台管理首頁與儀表板</p>
+                    <p><strong>權限：</strong>需要管理員或社工權限</p>
+                </div>
+
+                <p class="text-muted">更多管理相關 API 端點...</p>
+            </div>
+        </div>
+
+        <!-- 通用說明 -->
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h3 class="mb-0"><i class="bi bi-info-circle"></i> 通用說明</h3>
+            </div>
+            <div class="card-body">
+                <h5>HTTP 狀態碼</h5>
+                <ul>
+                    <li><code>200 OK</code> - 請求成功</li>
+                    <li><code>302 Found</code> - 重定向（常用於表單提交後）</li>
+                    <li><code>400 Bad Request</code> - 請求參數錯誤</li>
+                    <li><code>401 Unauthorized</code> - 未登入或無權限</li>
+                    <li><code>404 Not Found</code> - 資源不存在</li>
+                    <li><code>500 Internal Server Error</code> - 伺服器錯誤</li>
+                </ul>
+
+                <h5 class="mt-4">認證方式</h5>
+                <p>本系統使用 Session-based 認證，登入後會在 Cookie 中儲存 session ID。</p>
+
+                <h5 class="mt-4">點數系統</h5>
+                <p>許多操作（如預約、報名）需要消耗點數。使用者可透過參加課程、完成工作等方式獲得點數。</p>
+
+                <h5 class="mt-4">資料格式</h5>
+                <p>多數表單使用 <code>application/x-www-form-urlencoded</code> 格式提交資料。</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

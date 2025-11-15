@@ -50,3 +50,9 @@ def search():
     """全站搜尋"""
     query = request.args.get('q', '')
     return render_template('search.html', query=query)
+
+
+@bp.route('/api')
+def api():
+    """API 文件"""
+    return render_template('api.html')
