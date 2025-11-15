@@ -51,7 +51,7 @@
     <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
         <div class="card h-100 glow-on-hover">
             {% if accommodation.get('image_url') %}
-            <img src="{{ accommodation.get('image_url') }}" class="card-img-top" alt="{{ accommodation.get('name') }}">
+            <img src="{{ accommodation.get('image_url') }}" class="card-img-top" alt="{{ accommodation.get('name') }}" style="height: 200px; object-fit: cover;">
             {% else %}
             <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
                 <i class="bi bi-building" style="font-size: 3rem;"></i>
